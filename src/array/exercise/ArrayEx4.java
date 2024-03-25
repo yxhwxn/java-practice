@@ -3,7 +3,8 @@ package array.exercise;
 import java.util.Scanner;
 
 public class ArrayEx4 {
-
+    //사용자에게 5개의 정수를 입력받아서 이들 정수의 합계와 평균을 계산하는 프로그램
+    
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
 
