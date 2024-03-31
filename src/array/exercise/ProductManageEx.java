@@ -17,9 +17,7 @@ public class ProductManageEx {
          * ! 상품은 3가지 까지 등록 가능
          */
 
-        Scanner nameScanner = new Scanner(System.in);
-        Scanner priceScanner = new Scanner(System.in);
-        Scanner userInputScanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         int userInput;
 
@@ -31,25 +29,34 @@ public class ProductManageEx {
         for (int i = 0; i < 10; i++) { // 얼마나 반복해서 프로그램을 돌릴지 몰라서, 일단 10으로 지정해놓음. 추후에 while문으로 하는 방법도 생각해보면 좋을듯
             System.out.println("1. 상품등록 | 2. 상품 목록 | 3. 종료");
             System.out.print("메뉴를 선택하세요: ");
-            userInput = userInputScanner.nextInt();
+            userInput = scanner.nextInt();
+            scanner.nextLine();
+
             if (userInput == 1) {
                 if (productCount < 3) {
                     System.out.print("상품 이름을 입력하세요: ");
-                    productNames[i] = nameScanner.nextLine();
+                    productNames[i] = scanner.nextLine();
+
                     System.out.print("상품 가격을 입력하세요: ");
-                    productPrices[i] = priceScanner.nextInt();
+                    productPrices[i] = scanner.nextInt();
 
                     productCount++;
                 } else {
                     System.out.println("현재 상품의 개수가 " + productCount + "개이므로 더 이상 상품을 등록할 수 없습니다.");
                 }
             } else if (userInput == 2) {
-                for (int j = 0; j < productCount; j++) {
-                    System.out.println(productNames[j] + ": " + productPrices[j] + "원");
+                if (productCount == 0) {
+                    System.out.println("등록된 상품이 없습니다.");
+                } else {
+                    for (int j = 0; j < productCount; j++) {
+                        System.out.println(productNames[j] + ": " + productPrices[j] + "원");
+                    }
                 }
             } else if (userInput == 3) {
                 System.out.println("프로그램을 종료합니다.");
                 break;
+            } else {
+                System.out.println("잘못된 입력입니다.");
             }
         }
 
